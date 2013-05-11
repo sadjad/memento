@@ -7,13 +7,29 @@ body {
 	user-select: none;
 }
 
+.alert {
+	position: fixed;
+	top: 50%;
+	font-size: 3rem;
+	margin-top: -6rem;
+	width: 100%;
+	text-align: center;
+}
+
+@media screen and (max-device-width: 480px){
+	.alert {
+	  font-size: 7rem;
+	  margin-top: -14rem;
+	}
+}
+
 .start {
 	display: none;
 	position: fixed;
 	top:50%;
 	margin-top: -150px;
 	width: 100%;
-	font-size: 150px;
+	font-size: 100px;
 	text-align: center;
 	cursor: pointer;
 	color: #222;
@@ -33,12 +49,13 @@ body {
 }
 
 #prenote, #prenote:hover {
-	color: #ddd;
+	color: #333;
 	position: fixed;
 	top:50%;
-	margin-top: 0px;
-	font-size: 90px;
+	margin-top: -30px;
+	font-size: 40px;
 	cursor: default;
+	text-shadow: none;
 }
 
 .start:hover{
