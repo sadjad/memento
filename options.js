@@ -36,9 +36,9 @@ var screenplay = [
 	{'time':132.11, 'txt': "Don't think, just do."},
 
 	{'time':137.45, 'txt': "More than anything,"},
-	{'time':139.61, 'txt': "I want to see you go."},
+	{'time':139.61, 'txt': "I want to see you grow."},
 	{'time':146.59, 'txt': "Take a glorious bite"},
-	{'time':148.42, 'txt': "Out of the whole world"},
+	{'time':148.42, 'txt': "Out of the whole world..."},
 	
 	{'time':160.00, 'txt': ""},
 ];

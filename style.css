@@ -32,6 +32,15 @@ body {
 	0 20px 20px rgba(0,0,0,.15);
 }
 
+#prenote, #prenote:hover {
+	color: #ddd;
+	position: fixed;
+	top:50%;
+	margin-top: 0px;
+	font-size: 90px;
+	cursor: default;
+}
+
 .start:hover{
 	color: #333;
 }

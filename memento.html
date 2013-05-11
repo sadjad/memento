@@ -3,7 +3,7 @@
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Medula+One' rel='stylesheet' type='text/css'>
 	<link href='style.css' rel='stylesheet' type='text/css'>
-	<link href='trajectory.css' rel='stylesheet' type='text/css'>
+	<link href='trajectory.css?' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="spin.min.js"></script>
 	<script type="text/javascript" src="trajectory.js"></script>
 	<script type="text/javascript" src="options.js"></script>
@@ -46,16 +46,19 @@
 				var loading = document.getElementById('loading');
 				loading.style.display = 'none';
 				
-				var d = document.getElementById('play');
-				d.style.display = 'block';
+				var startItems = document.getElementsByClassName("start");
+				for(var i=0; i<startItems.length;i++)
+					startItems[i].style.display = 'block';
 			});
 			//and yes, this would trigger the event.
 			ad.src = "ycbh.mp3";
 		}
 		
 		function play(){
-			var d = document.getElementById("play");
-			d.style.display = 'none';
+			var startItems = document.getElementsByClassName("start");
+			for(var i=0; i<startItems.length;i++)
+				startItems[i].style.display = 'none';
+
 			audio = document.getElementById("audioplay");
 			audio.play();
 			
@@ -67,6 +70,11 @@
 <div id="play" class="start" onclick="play();">
 Play
 </div>
+
+<div id="prenote" class="start">
+	Plug in your headphones.
+</div>
+
 
 <div id="loading">
 	<div id='txtld'>Please wait a moment, as we bring the director</div>

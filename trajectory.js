@@ -150,7 +150,7 @@ Trajectory.prototype.addScenario = function(t,type,opts){
 			break;
 		case 'starrynight':
 			if(t<0)
-				this.startStarry();
+				this.startStarryNight();
 			else
 				this.timeouts.push(setTimeout(function(){
 					This.startStarryNight();
@@ -316,20 +316,20 @@ Trajectory.prototype.startStarryNight = function() {
 	this.nextel.className = 'starry-text';
 	document.body.className = 'starry';
 	
-	//move the skies.
-	var posx = [0,40,130,70];
-	var posy = [0,60,270,100];
-	this.night_time = setInterval(function(){
-		
-		var postr = posx[0]+"px "+posy[0]+"px, "+
-					posx[1]+"px "+posy[1]+"px, "+
-					posx[2]+"px "+posy[2]+"px, "+
-					posx[3]+"px "+posy[3]+"px";
-		
-		document.body.style.backgroundPosition = postr; 
-		posx[0]+=0.5;
-		posx[1]+=1.5;
-		posx[2]+=0.7;
-		posx[3]+=1;
-	},30);
+	// //move the skies.
+	// var posx = [0,40,130,70];
+	// var posy = [0,60,270,100];
+	// this.night_time = setInterval(function(){
+	// 	
+	// 	var postr = posx[0]+"px "+posy[0]+"px, "+
+	// 				posx[1]+"px "+posy[1]+"px, "+
+	// 				posx[2]+"px "+posy[2]+"px, "+
+	// 				posx[3]+"px "+posy[3]+"px";
+	// 	
+	// 	document.body.style.backgroundPosition = postr; 
+	// 	posx[0]+=0.5;
+	// 	posx[1]+=1.5;
+	// 	posx[2]+=0.7;
+	// 	posx[3]+=1;
+	// },30);
 }
