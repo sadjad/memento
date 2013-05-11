@@ -61,7 +61,12 @@
 		function play(){
 			var startItems = document.getElementsByClassName("start");
 			for(var i=0; i<startItems.length;i++)
-				startItems[i].style.display = 'none';
+				startItems[i].style.opacity = 0;
+			
+			setTimeout(function(){
+				for(var i=0; i<startItems.length;i++)
+					startItems[i].style.display = 'none';	
+			},1000);
 
 			audio = document.getElementById("audioplay");
 			audio.play();

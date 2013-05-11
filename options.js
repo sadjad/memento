@@ -7,8 +7,8 @@ var screenplay = [
 
 	{'time':33.64, 'txt': "And all the things"},
 	{'time':35.37, 'txt': "That I wished I had not said"},
-	{'time':42.16, 'txt': "Are played on loops"},
-	{'time':43.82, 'txt': "Till it's madness in my head"},
+	{'time':41.86, 'txt': "Are played on loops"},
+	{'time':43.52, 'txt': "Till it's madness in my head"},
 
 	{'time':50.76, 'txt': "Is it too late to remind you"},
 	{'time':54.28, 'txt': "How we were?"},
@@ -19,6 +19,9 @@ var screenplay = [
 	{'time':71.56, 'txt': "Makes me sure"},
 	{'time':76.47, 'txt': "I should have stopped you from walking"},
 	{'time':80.53, 'txt': "Out the door"},
+	
+	//breath.
+	{'time':83.3, 'txt': ""},
 
 	{'time':85.97, 'txt': "You could be happy"},
 	{'time':88.50, 'txt': "I hope you are."},
@@ -40,7 +43,9 @@ var screenplay = [
 	{'time':146.59, 'txt': "Take a glorious bite"},
 	{'time':148.42, 'txt': "Out of the whole world..."},
 	
-	{'time':160.00, 'txt': ""},
+	{'time':156.00, 'txt': ""},
+	
+	{'time':166.00, 'txt': ":)"},
 ];
 
 var trajectory = {
@@ -64,6 +69,9 @@ var trajectory = {
 					'fade',
 					'add-bottom',
 
+					//breath.
+					'fade',
+
 					'fade',
 					'add-bottom',
 					'fade',
@@ -85,21 +93,28 @@ var trajectory = {
 					'add-bottom',
 					
 					'fade',
+					'fade',
 	],
 	'storyboard' : {
 		'default': {'type':'white'},
 		'scenario': [
 			{'time': 3, 'type': 'gradient', 'options':{'to':'#000'}},
 			{'time': 10, 'type': 'gradient', 'options':{'to':'#bdf'}},
-			{'time': 25, 'type': 'photo','options':{'url':'visa.jpg','max-opacity':0.5,'increment-x':'-0.5','start-x':'0'}},
-			{'time': 25, 'type': 'fonteffect','options':{'text-shadow':'0px 0px 6px #222','color':'#efefef'}},
-			{'time': 34, 'type': 'fonteffect','options':{'text-shadow':'none','color':'#333'}},
 			{'time': 59.5, 'type': 'gradient', 'options':{'to':'#f83','text-to':'#fff'}},
 			{'time': 68, 'type': 'gradient', 'options':{'to':'#bdf','text-to':'#333'}},
-			{'time': 76, 'type': 'photo','options':{'url':'airport.jpg','max-opacity':0.3,'increment-x':'+0.5','start-x':'-100','start-y':'-300'}},
-			{'time': 81, 'type': 'gradient', 'options':{'to':'#001','text-to':'#001'}},
+			{'time': 76, 'type': 'photo','options':{'url':'visa.jpg','max-opacity':0.5,'increment-x':'-0.5','start-x':'0'}},
+			{'time': 76.8, 'type': 'fonteffect','options':{'text-shadow':'0px 0px 6px #222','color':'#efefef'}},
+			{'time': 81, 'type': 'gradient', 'options':{'to':'#001'}},
+			{'time': 85.5, 'type': 'fonteffect','options':{'text-shadow':'none'}},
 			{'time': 86, 'type': 'starrynight'},
-//			{'time': 104, 'type': 'photo','options':{'url':'night-flower.png','max-opacity':0.7,'increment-x':'-0.5','start-x':'300'}},
+			{'time': 160, 'type': 'fonteffect', 
+					'options':{'font-size':'160px',
+							   'font-family':'Helvetica',
+							   'text-shadow':'0px 0px 3px #555',
+							   '-webkit-transition-duration':'5s',
+							   '-moz-transition-duration':'5s',
+							   'transition-duration':'5s'}},
+			{'time': 160, 'type': 'gradient', 'options':{'to':'#eee','text-to':'#333'}},
 		]
 	}
 };

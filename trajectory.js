@@ -190,12 +190,10 @@ Trajectory.prototype.addScenario = function(t,type,opts){
 		case 'fonteffect':
 			if(opts != undefined)
 			{
-				shadow = opts['text-shadow'];
-				color = opts['color'];
 				if(t<0)
-					this.startFontEffect(color,shadow);
+					this.startFontEffect(opts);
 				else
-					this.queueFontEffect(t,color,shadow);
+					this.queueFontEffect(t,opts);
 			}
 			break;
 			
@@ -217,10 +215,10 @@ Trajectory.prototype.queuePhoto = function(t, url, max_opacity, startx, incx, st
 }
 
 
-Trajectory.prototype.queueFontEffect = function(t,color,shadow) {
+Trajectory.prototype.queueFontEffect = function(t,opts) {
 	var This = this;
 	this.timeouts.push(setTimeout(function(){
-		This.startFontEffect(color,shadow);
+		This.startFontEffect(opts);
 	},t))
 }
 
@@ -242,18 +240,30 @@ Trajectory.prototype.startGradient = function(color,txtcolor) {
 	}
 }
 
-Trajectory.prototype.startFontEffect = function(color,shadow) {
+Trajectory.prototype.startFontEffect = function(fontopts) {
 
-	if(color != undefined)
+	for(var key in fontopts)
 	{
-		this.el.style.color = color;
-		this.nextel.style.color = color;
-	}
-	
-	if(shadow != undefined)
-	{
-		this.el.style.textShadow = shadow;
-		this.nextel.style.textShadow = shadow;
+		if (!fontopts.hasOwnProperty(key)) {
+			continue;
+		}
+		this.el.style[key] = fontopts[key];
+		this.nextel.style[key] = fontopts[key];
+		
+		if(fontopts[key]==='font-size')
+		{
+			var sign = '-';
+			var size = fontopts[key];
+			
+			if(size[0]==='+')
+				size = size.slice(1,size.length);
+			else if(size[0]==='-')
+				sign = '+';
+				
+			//center it
+			this.el.style.marginTop = '-'+size;
+			this.nextel.style.marginTop = '-'+size;
+		}
 	}
 }
 
