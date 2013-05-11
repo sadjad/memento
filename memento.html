@@ -1,0 +1,84 @@
+<html>
+
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Medula+One' rel='stylesheet' type='text/css'>
+	<link href='style.css' rel='stylesheet' type='text/css'>
+	<link href='trajectory.css' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="spin.min.js"></script>
+	<script type="text/javascript" src="trajectory.js"></script>
+	<script type="text/javascript" src="options.js"></script>
+	
+	<script>
+		var lyricsTrajectory = null;
+		
+		var opts = {
+		  lines: 11, // The number of lines to draw
+		  length: 8, // The length of each line
+		  width: 4, // The line thickness
+		  radius: 11, // The radius of the inner circle
+		  corners: 1, // Corner roundness (0..1)
+		  rotate: 0, // The rotation offset
+		  direction: 1, // 1: clockwise, -1: counterclockwise
+		  color: '#000', // #rgb or #rrggbb
+		  speed: 1, // Rounds per second
+		  trail: 60, // Afterglow percentage
+		  shadow: true, // Whether to render a shadow
+		  hwaccel: false, // Whether to use hardware acceleration
+		  className: 'spinner', // The CSS class to assign to the spinner
+		  zIndex: 2e9, // The z-index (defaults to 2000000000)
+		  top: 'auto', // Top position relative to parent in px
+		  left: 'auto' // Left position relative to parent in px
+		};
+		window.onload = function() {
+			var target = document.getElementById('loading');
+			var spinner = new Spinner(opts).spin(target);
+			
+			//preload images and other items for the scenario
+			
+			lyricsTrajectory = new Trajectory(document.getElementById("lyrics"),
+												  document.getElementById("lyrics-next"),
+												  screenplay,trajectory);
+												  
+			lyricsTrajectory.preload();
+			
+			var ad = document.getElementById('audioplay');
+			ad.addEventListener('canplaythrough', function() {
+				var loading = document.getElementById('loading');
+				loading.style.display = 'none';
+				
+				var d = document.getElementById('play');
+				d.style.display = 'block';
+			});
+			//and yes, this would trigger the event.
+			ad.src = "ycbh.mp3";
+		}
+		
+		function play(){
+			var d = document.getElementById("play");
+			d.style.display = 'none';
+			audio = document.getElementById("audioplay");
+			audio.play();
+			
+			lyricsTrajectory.start();
+		}
+	</script>
+</head>
+
+<div id="play" class="start" onclick="play();">
+Play
+</div>
+
+<div id="loading">
+	<div id='txtld'>Please wait a moment, as we bring the director</div>
+</div>
+
+<audio id="audioplay">
+<!--	<source src="horse.ogg" type="audio/ogg">
+	<source src="ycbh.mp3" type="audio/mpeg">-->
+	Get a life. Your browser is too old.
+</audio>
+
+<div class="main-text" id="lyrics"></div>
+<div class="main-text" id="lyrics-next"></div>
+
+</html>
