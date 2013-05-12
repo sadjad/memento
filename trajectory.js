@@ -156,6 +156,15 @@ Trajectory.prototype.addScenario = function(t,type,opts){
 					This.startStarryNight();
 				},t));
 			break;
+		case 'fadenight':
+			if(t<0)
+				this.fadeNight();
+			else
+				this.timeouts.push(setTimeout(function(){
+					This.fadeNight();
+				},t));
+			break;
+
 		case 'gradient':
 			if(opts != undefined)
 			{
@@ -185,6 +194,15 @@ Trajectory.prototype.addScenario = function(t,type,opts){
 						opts['increment-x'],
 						opts['start-y'],
 						opts['increment-y']);
+			}
+			break;
+		case 'bodyeffect':
+			if(opts != undefined)
+			{
+				if(t<0)
+					this.startBodyEffect(opts);
+				else
+					this.queueBodyEffect(t,opts);
 			}
 			break;
 		case 'fonteffect':
@@ -222,6 +240,12 @@ Trajectory.prototype.queueFontEffect = function(t,opts) {
 	},t))
 }
 
+Trajectory.prototype.queueBodyEffect = function(t,opts) {
+	var This = this;
+	this.timeouts.push(setTimeout(function(){
+		This.startBodyEffect(opts);
+	},t))
+}
 
 Trajectory.prototype.startWhite = function() {
 	//do nothing	
@@ -250,7 +274,7 @@ Trajectory.prototype.startFontEffect = function(fontopts) {
 		this.el.style[key] = fontopts[key];
 		this.nextel.style[key] = fontopts[key];
 		
-		if(fontopts[key]==='font-size')
+		if(key==='font-size')
 		{
 			var sign = '-';
 			var size = fontopts[key];
@@ -264,6 +288,26 @@ Trajectory.prototype.startFontEffect = function(fontopts) {
 			this.el.style.marginTop = '-'+size;
 			this.nextel.style.marginTop = '-'+size;
 		}
+	}
+}
+
+
+Trajectory.prototype.startBodyEffect = function(bodyopts) {
+
+	for(var key in bodyopts)
+	{
+		if (!bodyopts.hasOwnProperty(key)) {
+			continue;
+		}
+		
+		if(key==='no-animation' && bodyopts[key]==true)
+		{
+			document.body.style['transition']='none';
+			document.body.style['-webkit-transition']='none';
+			document.body.style['-moz-transition']='none';
+		}
+		
+		document.body.style[key] = bodyopts[key];
 	}
 }
 
@@ -322,24 +366,17 @@ Trajectory.prototype.startPhoto = function(url, max_opacity_r, startx, incx, sta
 }
 
 Trajectory.prototype.startStarryNight = function() {
-	this.el.className = 'starry-text';
-	this.nextel.className = 'starry-text';
+	this.el.style['color'] = '#efefef';
+	this.nextel.style['color'] = '#efefef';
 	document.body.className = 'starry';
-	
-	// //move the skies.
-	// var posx = [0,40,130,70];
-	// var posy = [0,60,270,100];
-	// this.night_time = setInterval(function(){
-	// 	
-	// 	var postr = posx[0]+"px "+posy[0]+"px, "+
-	// 				posx[1]+"px "+posy[1]+"px, "+
-	// 				posx[2]+"px "+posy[2]+"px, "+
-	// 				posx[3]+"px "+posy[3]+"px";
-	// 	
-	// 	document.body.style.backgroundPosition = postr; 
-	// 	posx[0]+=0.5;
-	// 	posx[1]+=1.5;
-	// 	posx[2]+=0.7;
-	// 	posx[3]+=1;
-	// },30);
+
+}
+
+Trajectory.prototype.fadeNight = function() {
+	var tag = document.createElement('div');
+	tag.className = 'overlay';
+	document.body.appendChild(tag);
+	setTimeout(function(){
+		tag.style.opacity = 1;
+	}, 500);
 }

@@ -99,8 +99,8 @@ var trajectory = {
 		'default': {'type':'white'},
 		'scenario': [
 			{'time': 3, 'type': 'gradient', 'options':{'to':'#000'}},
-			{'time': 10, 'type': 'gradient', 'options':{'to':'#bdf'}},
-			{'time': 59.5, 'type': 'gradient', 'options':{'to':'#f83','text-to':'#fff'}},
+		 	{'time': 10, 'type': 'gradient', 'options':{'to':'#bdf'}},
+				{'time': 59.5, 'type': 'gradient', 'options':{'to':'#f83','text-to':'#fff'}},
 			{'time': 68, 'type': 'gradient', 'options':{'to':'#bdf','text-to':'#333'}},
 			{'time': 76, 'type': 'photo','options':{'url':'visa.jpg','max-opacity':0.5,'increment-x':'-0.5','start-x':'0'}},
 			{'time': 76.8, 'type': 'fonteffect','options':{'text-shadow':'0px 0px 6px #222','color':'#efefef'}},
@@ -108,13 +108,15 @@ var trajectory = {
 			{'time': 85.5, 'type': 'fonteffect','options':{'text-shadow':'none'}},
 			{'time': 86, 'type': 'starrynight'},
 			{'time': 160, 'type': 'fonteffect', 
-					'options':{'font-size':'160px',
-							   'font-family':'Helvetica',
+					'options':{'font-size':'47px',
+							   'font-family':'"Gill Sans", "Gill Sans MT", Calibri, sans-serif',
+							   'color':'#333',
 							   'text-shadow':'0px 0px 3px #555',
-							   '-webkit-transition-duration':'5s',
-							   '-moz-transition-duration':'5s',
-							   'transition-duration':'5s'}},
-			{'time': 160, 'type': 'gradient', 'options':{'to':'#eee','text-to':'#333'}},
+							   '-webkit-transition-duration':'1s',
+							   '-moz-transition-duration':'1s',
+							   'transition-duration':'1s'}},
+			{'time': 156, 'type': 'fadenight'},
+			{'time': 163, 'type': 'bodyeffect', 'options':{'no-animation':true,'background-color':'#fff','color':'#333','background-image':'none'}},
 		]
 	}
 };

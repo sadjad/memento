@@ -87,10 +87,6 @@
 	}
 }
 
-.starry-text {
-	color: #efefef !important;
-}
-
 .gradient {
 	/* transitions */
 	-webkit-transition: all 5s ease-in-out;
@@ -107,4 +103,18 @@
 	height: 100%;
 	z-index: -1;
 	background-repeat: no-repeat;
+}
+
+.overlay {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background-color: #fff;
+	z-index: -1;
+	-moz-transition: all 5s ease-in-out;
+	-webkit-transition: all 5s ease-in-out;
+	transition: all 5s ease-in-out;
 }
